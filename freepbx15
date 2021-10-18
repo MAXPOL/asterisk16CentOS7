@@ -12,3 +12,4 @@ cd freepbx
 
 ./install -n
 
+systemctl restart httpd
