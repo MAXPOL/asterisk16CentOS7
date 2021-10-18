@@ -12,4 +12,7 @@ cd freepbx
 
 ./install -n
 
+firewall-cmd --permanent --zone=public --add-port=80/tcp --add-port=80/udp
+firewall-cmd --reload
+
 systemctl restart httpd
