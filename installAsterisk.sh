@@ -53,8 +53,19 @@ chown -R asterisk.asterisk /etc/asterisk
 chown -R asterisk.asterisk /var/{lib,log,spool}/asterisk
 chown -R asterisk.asterisk /usr/lib/asterisk
 
+systemctl enable httpd
+systemctl start httpd
+
 systemctl start asterisk
 systemctl enable asterisk
+
+firewall-cmd --permanent --zone=public --add-port=5060/tcp --add-port=5060/udp
+firewall-cmd --permanent --zone=public --add-port=5061/tcp --add-port=5061/udp
+firewall-cmd --permanent --zone=public --add-port=4569/tcp --add-port=4569/udp
+firewall-cmd --permanent --zone=public --add-port=5038/tcp --add-port=5038/udp
+firewall-cmd --permanent --zone=public --add-port=5038/tcp --add-port=5038/udp
+firewall-cmd --permanent --zone=public --add-port=10000-20000/udp
+firewall-cmd --reload
 
 clear
 
