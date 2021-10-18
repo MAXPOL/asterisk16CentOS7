@@ -1,7 +1,7 @@
 #!/bin/bash
 
-echo "Enter new password database:"
-read passworddb
+#echo "Enter new password database:"
+#read passworddb
 
 yum update -y
 
@@ -32,16 +32,16 @@ yum install gcc-c++ make nodejs -y
 systemctl start mariadb
 systemctl enable mariadb
 
-mysql_secure_installation <<EOF
+#mysql_secure_installation <<EOF
 
-y
-$passworddb
-$passworddb
-y
-n
-y
-y
-EOF
+#y
+#$passworddb
+#$passworddb
+#y
+#n
+#y
+#y
+#EOF
 
 cd /
 wget http://downloads.asterisk.org/pub/telephony/asterisk/asterisk-16-current.tar.gz
