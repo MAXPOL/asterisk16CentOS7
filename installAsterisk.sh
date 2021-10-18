@@ -2,8 +2,6 @@
 
 yum update -y
 
-rpm -Uhv http://rpms.remirepo.net/enterprise/remi-release-7.rpm
-
 sed -i 's/SELINUX=enforcing/SELINUX=disabled/g' /etc/selinux/config
 
 yum install epel-release -y
@@ -12,6 +10,7 @@ yum groupinstall core base "Development Tools" -y
 
 yum install mariadb-server yum-utils iksemel-devel dnf httpd -y
 
+rpm -Uhv http://rpms.remirepo.net/enterprise/remi-release-7.rpm
 yum-config-manager --enable remi-php71
 
 yum install wget php php-pear php-cgi php-common php-curl php-mbstring php-gd php-mysql php-gettext php-bcmath php-zip php-xml php-imap php-json php-process php-snmp -y
