@@ -1,5 +1,8 @@
 #!/bin/bash
 
+echo "Enter new password database:"
+read passworddb
+
 yum update -y
 
 sed -i 's/SELINUX=enforcing/SELINUX=disabled/g' /etc/selinux/config
@@ -28,6 +31,17 @@ yum install gcc-c++ make nodejs -y
 
 systemctl start mariadb
 systemctl enable mariadb
+
+mysql_secure_installation <<EOF
+
+y
+$passworddb
+$passworddb
+y
+n
+y
+y
+EOF
 
 cd /
 wget http://downloads.asterisk.org/pub/telephony/asterisk/asterisk-16-current.tar.gz
