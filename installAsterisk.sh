@@ -73,6 +73,9 @@ systemctl start httpd
 systemctl start asterisk
 systemctl enable asterisk
 
+systemctl start firewalld
+systemctl enable firewalld
+
 firewall-cmd --permanent --zone=public --add-port=5060/tcp --add-port=5060/udp
 firewall-cmd --permanent --zone=public --add-port=5061/tcp --add-port=5061/udp
 firewall-cmd --permanent --zone=public --add-port=4569/tcp --add-port=4569/udp
