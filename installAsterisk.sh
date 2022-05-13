@@ -9,7 +9,7 @@ rpm -Uhv http://rpms.remirepo.net/enterprise/remi-release-7.rpm
 yum install yum-utils -y
 yum-config-manager --enable remi-php71
 yum install wget php php-pear php-cgi php-common php-curl php-mbstring php-gd php-mysql php-gettext php-bcmath php-zip php-xml php-imap php-json php-process php-snmp -y
-yum install httpd wget -y
+yum install httpd wget sox -y
 
 sed -i 's/^\(User\|Group\).*/\1 asterisk/' /etc/httpd/conf/httpd.conf
 sed -i 's/AllowOverride None/AllowOverride All/' /etc/httpd/conf/httpd.conf
