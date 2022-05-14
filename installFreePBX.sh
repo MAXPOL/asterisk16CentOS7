@@ -1,9 +1,4 @@
 #!/bin/bash
-yum -y install epel-release
-yum install http://rpms.remirepo.net/enterprise/remi-release-7.rpm -y
-yum install yum-utils -y
-yum-config-manager --enable remi-php72
-yum update -y
 wget http://mirror.freepbx.org/modules/packages/freepbx/freepbx-15.0-latest.tgz
 tar xvfz freepbx-*.tgz
 cd freepbx
