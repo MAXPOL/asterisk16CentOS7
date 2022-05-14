@@ -3,6 +3,10 @@
 sed -i 's/SELINUX=enforcing/SELINUX=disabled/g' /etc/selinux/config
 yum update -y
 yum install epel-release -y
+yum install http://rpms.remirepo.net/enterprise/remi-release-7.rpm -y
+yum install yum-utils -y
+yum-config-manager --enable remi-php72
+yum update -y
 yum groupinstall core base "Development Tools" -y
 yum install mariadb mariadb-server mariadb-client -y
 rpm -Uhv http://rpms.remirepo.net/enterprise/remi-release-7.rpm
