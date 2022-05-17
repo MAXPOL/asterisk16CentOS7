@@ -11,7 +11,7 @@ yum groupinstall core base "Development Tools" -y
 yum install mariadb mariadb-server mariadb-client -y
 rpm -Uhv http://rpms.remirepo.net/enterprise/remi-release-7.rpm
 yum install yum-utils -y
-yum-config-manager --enable remi-php71
+yum-config-manager --enable remi-php74
 yum install wget php php-pear php-cgi php-common php-curl php-mbstring php-gd php-mysql php-gettext php-bcmath php-zip php-xml php-imap php-json php-process php-snmp -y
 yum install httpd wget sox -y
 
