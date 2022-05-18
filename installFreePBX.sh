@@ -1,4 +1,5 @@
 #!/bin/bash
+setenforce 0
 wget http://mirror.freepbx.org/modules/packages/freepbx/freepbx-15.0-latest.tgz
 tar xvfz freepbx-*.tgz
 cd freepbx
