@@ -1,3 +1,3 @@
 # asterisk16CentOS7
 
-Turn it on 'macro' applocation for internal call.
+Turn it on 'macro' application for internal call.
