@@ -4,6 +4,11 @@ Turn it on 'macro' application for internal call.
 
 Reboot system after install asterisk for correct install FreePBX.
 
+
+For activate work 'chan_sip' you can open 'settings'->'advanced settings' and change string 'SIP Channel Driver' setup parametr on 'BOTH'.
+
+
+
 For protect access in web interfaces FreePBX you can create password on access on server level:
 
 touch /etc/httpd/.htpasswd
