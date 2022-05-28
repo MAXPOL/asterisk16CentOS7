@@ -15,6 +15,9 @@ nano /var/www/html/.htaccess
 Add inside file strings:
 
 AuthType Basic
+
 AuthName "Restricted Content"
+
 AuthUserFile /etc/httpd/.htpasswd
+
 Require valid-user
