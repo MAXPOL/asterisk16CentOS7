@@ -1,5 +1,11 @@
 # asterisk16CentOS7
 
+Warning ! Attention ! Maximum protect you voip server otherwise you lose many money !
+
+---
+---
+---
+
 Turn it on 'macro' application for internal call.
 
 
@@ -32,3 +38,4 @@ AuthUserFile /etc/httpd/.htpasswd
 Require valid-user
 
 ---
+
