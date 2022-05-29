@@ -42,3 +42,25 @@ Require valid-user
 IVR
 
 For activate IVR menu you open 'Admin'->'Module Admin' and press button 'Check online' in list download select module IVR.
+
+---
+
+Settings SIP Trunk
+
+OUTGOING
+
+host=ADDRESS_VOIP_SERVER_PROVIDER
+type=peer
+context=from-trunk
+username=LOGIN
+secret=PASSWORD
+fromuser=LOGIN
+fromdomain=ADDRESS_VOIP_SERVER_PROVIDER
+qualify=yes
+insecure=invite,port
+faxdetect=no
+account=NAME_CONNECT
+
+INCOMING
+
+LOGIN:PASSWORD@ADDRESS_VOIP_SERVER_PROVIDER/NUMBER_PHONE
