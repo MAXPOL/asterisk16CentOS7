@@ -49,27 +49,28 @@ Settings SIP Trunk
 
 OUTGOING
 
-host=ADDRESS_VOIP_SERVER_PROVIDER
-
-type=peer
+host=ADDRESS_YOU_VOIP_PROVIDER
 
 context=from-trunk
 
+insecure=port,invite
+
+type=peer
+
 username=LOGIN
+
+defaultuser=LOGIN
 
 secret=PASSWORD
 
 fromuser=LOGIN
 
-fromdomain=ADDRESS_VOIP_SERVER_PROVIDER
+fromdomain=ADDRESS_YOU_VOIP_PROVIDER
 
 qualify=yes
 
-insecure=invite,port
+nat=auto_force_rport,auto_comedia
 
-faxdetect=no
-
-account=NAME_CONNECT
 
 INCOMING
 
