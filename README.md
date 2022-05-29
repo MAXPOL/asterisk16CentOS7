@@ -39,3 +39,6 @@ Require valid-user
 
 ---
 
+IVR
+
+For activate IVR menu you open 'Admin'->'Module Admin' and press button 'Check online' in list download select module IVR.
