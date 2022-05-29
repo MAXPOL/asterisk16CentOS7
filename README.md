@@ -50,15 +50,25 @@ Settings SIP Trunk
 OUTGOING
 
 host=ADDRESS_VOIP_SERVER_PROVIDER
+
 type=peer
+
 context=from-trunk
+
 username=LOGIN
+
 secret=PASSWORD
+
 fromuser=LOGIN
+
 fromdomain=ADDRESS_VOIP_SERVER_PROVIDER
+
 qualify=yes
+
 insecure=invite,port
+
 faxdetect=no
+
 account=NAME_CONNECT
 
 INCOMING
