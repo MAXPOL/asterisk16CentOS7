@@ -80,7 +80,7 @@ LOGIN:PASSWORD@ADDRESS_VOIP_SERVER_PROVIDER/NUMBER_PHONE
 
 Connect 2 and more server Asterisk (FreePBX)
 
-Add IAX2 Trunk
+Add IAX2 Trunk on both server
 
 Any name trunks
 
