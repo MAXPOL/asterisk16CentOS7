@@ -75,3 +75,29 @@ nat=auto_force_rport,auto_comedia
 INCOMING
 
 LOGIN:PASSWORD@ADDRESS_VOIP_SERVER_PROVIDER/NUMBER_PHONE
+
+---
+
+Connect 2 and more server Asterisk (FreePBX)
+
+Add IAX2 Trunk
+
+Any name trunks
+
+Outgouing and Incoming
+
+type=friend
+
+host= IP_ADDRESS_OTHER SERVER
+
+qualify=yes
+
+insecure=invite,port
+
+nat=yes
+
+context=from-internal
+
+---
+
+
