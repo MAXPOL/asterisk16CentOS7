@@ -105,3 +105,8 @@ httpd.conf
 Copy httpd.cond in /etc/httpd/conf/
 
 Copy asterisk.conf inn /etc/httpd/conf.d/
+
+Copy .htaccess-1 in /var/www/html/ and rename .htaccess-1 in .htaccess
+
+Copy .htaccess-2 in /var/www/html/ and rename .htaccess-2 in .htaccess
+
