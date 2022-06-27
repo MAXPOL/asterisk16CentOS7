@@ -103,3 +103,5 @@ context=from-internal
 httpd.conf
 
 Copy httpd.cond in /etc/httpd/conf/
+
+Copy asterisk.conf inn /etc/httpd/conf.d/
