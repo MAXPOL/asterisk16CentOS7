@@ -17,4 +17,4 @@ asterisk -rx "logger rotate"
 systemctl start fail2ban
 clear
 systemctl status fail2ban
-ail2ban-client status asterisk-iptables
+fail2ban-client status asterisk-iptables
