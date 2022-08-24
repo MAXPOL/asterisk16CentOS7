@@ -110,3 +110,6 @@ Copy .htaccess-1 in /var/www/html/ and rename .htaccess-1 in .htaccess
 
 Copy .htaccess-2 in /var/www/html/ and rename .htaccess-2 in .htaccess
 
+---
+For guard asterisk from guessing passwords sip number use fail2ban
+
