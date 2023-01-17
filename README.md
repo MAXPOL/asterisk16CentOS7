@@ -102,7 +102,7 @@ OUTBOUND ROUTES IN CONNECTIVITY
 
 Any name trunks
 
-Trunk Sequence for Matched Routes select created  IAX2  TRUNK
+'Trunk Sequence for Matched Routes' select created  IAX2  TRUNK
 
 ---
 
