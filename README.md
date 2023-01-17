@@ -80,7 +80,7 @@ LOGIN:PASSWORD@ADDRESS_VOIP_SERVER_PROVIDER/NUMBER_PHONE
 
 Connect 2 and more server Asterisk (FreePBX)
 
-Add IAX2 Trunk on both server
+Add IAX2 Trunk on both server (CONNECTIVITY->TRUNKS)
 
 Any name trunks
 
@@ -97,6 +97,12 @@ insecure=invite,port
 nat=yes
 
 context=from-internal
+
+OUTBOUND ROUTES IN CONNECTIVITY
+
+Any name trunks
+
+Trunk Sequence for Matched Routes select created  IAX2  TRUNK
 
 ---
 
