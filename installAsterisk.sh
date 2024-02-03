@@ -29,7 +29,8 @@ systemctl start httpd
 systemctl enable mariadb
 systemctl enable httpd
 
-wget http://downloads.asterisk.org/pub/telephony/asterisk/asterisk-16-current.tar.gz
+#wget http://downloads.asterisk.org/pub/telephony/asterisk/asterisk-16-current.tar.gz
+wget https://downloads.asterisk.org/pub/telephony/asterisk/releases/asterisk-16.9.0.tar.gz
 tar zxvf asterisk-*.tar.gz
 cd asterisk*
 contrib/scripts/install_prereq install
