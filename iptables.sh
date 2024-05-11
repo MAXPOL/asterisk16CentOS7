@@ -7,6 +7,7 @@ systemctl enable iptables
 
 
 iptables -P INPUT DROP
+iptables -I INPUT -p tcp --dport 22 -j ACCEPT
 iptables -I INPUT -p tcp --dport 80 -j ACCEPT
 iptables -I INPUT -p tcp --dport 5060 -j ACCEPT
 iptables -I INPUT -p udp --dport 5060 -j ACCEPT
