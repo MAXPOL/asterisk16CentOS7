@@ -119,3 +119,7 @@ Copy .htaccess-2 in /var/www/html/ and rename .htaccess-2 in .htaccess
 ---
 For guard asterisk from guessing passwords sip number use fail2ban
 
+---
+
+For call need sip phone. For Windows recommend microsip, for linux recommend zoiper.
+For call need sip phone. For Windows recommend microsip, for linux recommend zoiper
