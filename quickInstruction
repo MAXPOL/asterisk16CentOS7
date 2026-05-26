@@ -1,0 +1,97 @@
+# THIS IS NOT BASH FILE. INSTRUCTION ONLY.
+sed -i s/mirror.centos.org/vault.centos.org/g /etc/yum.repos.d/CentOS*
+sed -i s/^#.*baseurl=http/baseurl=http/g /etc/yum.repos.d/CentOS*
+sed -i s/^mirrorlist=http/#mirrorlist=http/g /etc/yum.repos.d/CentOS*
+sed -i 's/SELINUX=enforcing/SELINUX=disabled/g' /etc/selinux/config
+yum install epel-release -y
+yum install http://rpms.remirepo.net/enterprise/remi-release-7.rpm -y
+yum install yum-utils -y
+yum-config-manager --enable remi-php74
+yum groupinstall core base "Development Tools" -y
+yum install mariadb mariadb-server mariadb-client -y
+yum install wget php php-pear php-cgi php-common php-curl php-mbstring php-gd php-mysql php-gettext php-bcmath php-zip php-xml php-imap php-json php-process php-snmp -y
+yum install httpd wget sox lame lame-devel -y
+
+sed -i 's/^\(User\|Group\).*/\1 asterisk/' /etc/httpd/conf/httpd.conf
+sed -i 's/AllowOverride None/AllowOverride All/' /etc/httpd/conf/httpd.conf
+sed -i 's/\(^upload_max_filesize = \).*/\120M/' /etc/php.ini
+
+curl -sL https://rpm.nodesource.com/setup_10.x | bash -
+yum install gcc-c++ make nodejs -y
+
+useradd -m asterisk
+systemctl start mariadb
+systemctl start httpd
+systemctl enable mariadb
+systemctl enable httpd
+
+wget https://downloads.asterisk.org/pub/telephony/asterisk/releases/asterisk-16.9.0.tar.gz
+tar zxvf asterisk-*.tar.gz
+cd asterisk*
+contrib/scripts/install_prereq install
+# nano contrib/scripts/get_mp3_source.sh http->https
+contrib/scripts/get_mp3_source.sh
+./configure --with-pjproject-bundled --with-jansson-bundled --with-crypto --with-ssl=ssl --with-srtp
+
+#Turn it on 'macro' application for internal call.
+make menuselect
+make && make install && make config && make samples && ldconfig
+sed -i 's/ASTARGS=""/ASTARGS="-U asterisk"/g' /usr/sbin/safe_asterisk
+
+chown asterisk.asterisk /var/run/asterisk
+chown -R asterisk.asterisk /etc/asterisk
+chown -R asterisk.asterisk /var/{lib,log,spool}/asterisk
+chown -R asterisk.asterisk /usr/lib/asterisk
+
+systemctl start asterisk
+clear
+systemctl status asterisk
+
+wget http://mirror.freepbx.org/modules/packages/freepbx/freepbx-16.0-latest.tgz
+tar xvfz freepbx-*.tgz
+cd freepbx
+systemctl start mariadb
+./start_asterisk start
+./install -n
+echo "include manager_additional.conf" >> /etc/asterisk/manager.conf
+echo "include manager_custom.conf" >> /etc/asterisk/manager.conf
+systemctl restart httpd
+
+systemctl stop firewalld 
+systemctl disable firewalld
+yum remove firewalld -y
+yum install iptables-services -y
+systemctl start iptables
+systemctl enable iptables
+
+iptables -P INPUT DROP
+iptables -I INPUT -p tcp --dport 22 -j ACCEPT
+iptables -I INPUT -p tcp --dport 80 -j ACCEPT
+iptables -I INPUT -p tcp --dport 5060 -j ACCEPT
+iptables -I INPUT -p udp --dport 5060 -j ACCEPT
+iptables -I INPUT -p tcp --dport 5061 -j ACCEPT
+iptables -I INPUT -p udp --dport 5061 -j ACCEPT
+iptables -I INPUT -p tcp --dport 5160 -j ACCEPT
+iptables -I INPUT -p udp --dport 5160 -j ACCEPT
+iptables -I INPUT -p udp --dport 4569 -j ACCEPT
+iptables -I INPUT -p tcp --dport 5038 -j ACCEPT
+iptables -I INPUT -p udp --dport 5038 -j ACCEPT
+iptables -I INPUT -p udp --dport 10000:20000 -j ACCEPT
+
+yum -y install fail2ban
+
+echo "[asterisk-iptables]" >> /etc/fail2ban/jail.conf
+echo "enabled  = true" >> /etc/fail2ban/jail.conf
+echo "filter   = asterisk" >> /etc/fail2ban/jail.conf
+echo "action   = iptables-allports[name=ASTERISK, protocol=all]" >> /etc/fail2ban/jail.conf
+echo "           sendmail-whois[name=ASTERISK, dest=root, sender=fail2ban@asterisk]" >> /etc/fail2ban/jail.conf
+echo "logpath  = /var/log/asterisk/messages" >> /etc/fail2ban/jail.conf
+echo "maxretry = 3" >> /etc/fail2ban/jail.conf
+echo "bantime = 259200" >> /etc/fail2ban/jail.conf
+
+echo "messages => notice,warning,error" >> /etc/asterisk/logger_logfiles_custom.conf
+asterisk -rx "logger rotate"
+systemctl start fail2ban
+clear
+systemctl status fail2ban
+fail2ban-client status asterisk-iptables
